@@ -4,29 +4,91 @@
   <meta charset="utf-8">
   <title>Jasmine Spec Runner</title>
 
+  
   <link rel="stylesheet" type="text/css" href=".grunt/grunt-contrib-jasmine/jasmine.css">
+  
 
+  <script src=".grunt/grunt-contrib-jasmine/require.js"></script>
+  <script>
+    require.onError = function(error) {
+      var message = error.requireType + ': ';
+      if (error.requireType === 'scripterror' || error.requireType === 'notloaded' && error.requireModules) {
+        message += 'Illegal path or script error: ' + '[\'' + error.requireModules.join("', '") + '\']';
+      } else {
+        message += error.message;
+      }
+
+      throw Error(message);
+    };
+  </script>
 
   
-  <script src=".grunt/grunt-contrib-jasmine/phantom-polyfill.js"></script>
   
   <script src=".grunt/grunt-contrib-jasmine/jasmine.js"></script>
   
   <script src=".grunt/grunt-contrib-jasmine/jasmine-html.js"></script>
   
-  <script src="app/bower_components/jquery/jquery.js"></script>
-  
-  <script src="app/bower_components/underscore/underscore.js"></script>
-  
-  <script src="app/bower_components/backbone/backbone.js"></script>
-  
-  <script src="test/spec/test.js"></script>
-  
-  <script src=".grunt/grunt-contrib-jasmine/reporter.js"></script>
-  
-  <script src=".grunt/grunt-contrib-jasmine/jasmine-helper.js"></script>
   
 
+  <script>
+    
+
+    
+      require.config({
+  "shim": {
+    "underscore": {
+      "exports": "_"
+    },
+    "backbone": {
+      "deps": [
+        "underscore",
+        "jquery"
+      ],
+      "exports": "Backbone"
+    },
+    "bootstrap": {
+      "deps": [
+        "jquery"
+      ],
+      "exports": "jquery"
+    },
+    "handlebars": {
+      "exports": "Handlebars"
+    }
+  },
+  "baseUrl": "app/scripts",
+  "paths": {
+    "jquery": "../bower_components/jquery/jquery",
+    "backbone": "../bower_components/backbone/backbone",
+    "underscore": "../bower_components/underscore/underscore",
+    "bootstrap": "vendor/bootstrap",
+    "handlebars": "../bower_components/handlebars/handlebars"
+  }
+});
+    
+  </script>
+
+  <script>
+    function launchTest() {
+    require([
+      
+    ],
+    function(){
+      require(['test/spec/collections/beersSpec.js','test/spec/models/beerSpec.js','.grunt/grunt-contrib-jasmine/reporter.js'], function(){
+        require(['.grunt/grunt-contrib-jasmine/jasmine-helper.js'], function(){
+          // good to go! Our tests should already be running.
+        })
+      })
+    }
+    )
+  }
+  </script>
+
+  
+  <script>
+  launchTest();
+  </script>
+  
 </head>
 <body>
 </body>

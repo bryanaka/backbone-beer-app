@@ -124,15 +124,29 @@ module.exports = function (grunt) {
         },
         jasmine: {
             all:{
-                src : '.tmp/scripts/combined-scripts.js',
+                src : ['.tmp/scripts/combined-scripts.js'],
                 options: {
                     keepRunner: true,
                     specs : 'test/spec/**/*.js',
                     vendor : [
-                        '<%= yeoman.app %>/bower_components/jquery/jquery.js',
-                        '<%= yeoman.app %>/bower_components/underscore/underscore.js',
-                        '<%= yeoman.app %>/bower_components/backbone/backbone.js'
+                        'app/bower_components/requirejs/require.js',
+                        'app/scripts/main.js'
+                        // '<%= yeoman.app %>/bower_components/jquery/jquery.js',
+                        // '<%= yeoman.app %>/bower_components/underscore/underscore.js',
+                        // '<%= yeoman.app %>/bower_components/backbone/backbone.js'
                     ]
+                }
+            },
+            req: {
+                src: ['.tmp/scripts/combined-scripts.js'],
+                options: {
+                    keepRunner: true,
+                    specs: 'test/spec/**/*.js',
+                    helpers: 'spec/*Helper.js',
+                    template: require('grunt-template-jasmine-requirejs'),
+                    templateOptions: {
+                        requireConfigFile: 'test/main-test.js'
+                    }
                 }
             }
         },
@@ -321,7 +335,7 @@ module.exports = function (grunt) {
         'createDefaultTemplate',
         'handlebars',
         'compass',
-        'jasmine',
+        'jasmine:req',
         'watch:test'
     ]);
 
