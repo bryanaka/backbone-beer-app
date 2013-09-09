@@ -28,7 +28,8 @@ require.config({
         underscore: '../bower_components/underscore/underscore',
         bootstrap: 'vendor/bootstrap',
         handlebars: '../bower_components/handlebars/handlebars',
-        templates: '../../.tmp/scripts/templates'
+        templates: '../../.tmp/scripts/templates',
+        'window': '../../test/window-mock'
     }
 });
 
