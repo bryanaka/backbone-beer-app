@@ -10,7 +10,7 @@ define([
         defaults: {
         	name: 'No Name',
         	type: 'lager',
-        	quantity: '12',
+        	quantity: 12,
         	container: 'can'
         }
     });

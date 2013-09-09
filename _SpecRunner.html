@@ -62,7 +62,8 @@
     "backbone": "../bower_components/backbone/backbone",
     "underscore": "../bower_components/underscore/underscore",
     "bootstrap": "vendor/bootstrap",
-    "handlebars": "../bower_components/handlebars/handlebars"
+    "handlebars": "../bower_components/handlebars/handlebars",
+    "templates": "../../.tmp/scripts/templates"
   }
 });
     
@@ -74,7 +75,7 @@
       
     ],
     function(){
-      require(['test/spec/collections/beersSpec.js','test/spec/models/beerSpec.js','.grunt/grunt-contrib-jasmine/reporter.js'], function(){
+      require(['test/spec/collections/beers_spec.js','test/spec/models/beer_spec.js','test/spec/router_spec.js','test/spec/views/beer_list_spec.js','test/spec/views/new_beer_spec.js','.grunt/grunt-contrib-jasmine/reporter.js'], function(){
         require(['.grunt/grunt-contrib-jasmine/jasmine-helper.js'], function(){
           // good to go! Our tests should already be running.
         })
