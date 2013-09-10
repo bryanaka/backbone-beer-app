@@ -11,7 +11,6 @@ function(window, $, _, Backbone, BeerListView, NewBeerView) {
     var router = new Router();
 
     router.on('route:index', function() {
-      console.log('home fired');
       var beerList = new BeerListView();
       beerList.render();
     });

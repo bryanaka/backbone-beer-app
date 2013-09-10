@@ -1,7 +1,7 @@
 /*global define*/
 
-define([ 'jquery', 'underscore', 'backbone', 'templates', '../models/beer'],
-function ($, _, Backbone, JST, Beer) {
+define([ 'jquery', 'underscore', 'backbone', 'templates', 'models/beer', 'views/beer_list'],
+function ($, _, Backbone, JST, Beer, BeerListView) {
     'use strict';
 
     var NewBeerView = Backbone.View.extend({
@@ -24,9 +24,8 @@ function ($, _, Backbone, JST, Beer) {
       		quantity: this.$el.find('#beer_quantity').val(),
       		container: this.$el.find('#beer_container').val()
       	});
-      	console.log(this.model);
-        var view = new BeerListView();
-        view.render(this.model);
+        var listView = new BeerListView();
+        listView.addBeer(this.model);
       }
     });
 

@@ -1,2 +1,8 @@
-<p>Your content here.</p>
-
+{{#if beer }}
+<div class="beer-card">
+	name: {{beer.name}}<br>
+	type: {{beer.type}}
+</div>
+{{else}}
+	No Beers!
+{{/if}}
