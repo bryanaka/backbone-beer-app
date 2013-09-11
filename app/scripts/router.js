@@ -1,5 +1,5 @@
-define(['window','jquery', 'underscore', 'backbone', 'views/beer_list', 'views/new_beer'],
-function(window, $, _, Backbone, BeerListView, NewBeerView) {
+define(['window','jquery', 'underscore', 'backbone', 'views/beer_list', 'views/new_beer', 'models/beer', 'collections/beers','bootstrap'],
+function(window, $, _, Backbone, BeerListView, NewBeerView, Beer, BeerCollection) {
 	var Router = Backbone.Router.extend({
 		routes: {
 			'':'index',
@@ -9,16 +9,17 @@ function(window, $, _, Backbone, BeerListView, NewBeerView) {
 
 	var initialize = function(){
     var router = new Router();
+    var beer_collection = new BeerCollection();
 
     router.on('route:index', function() {
-      var beerList = new BeerListView();
-      beerList.render();
+      var beer_list = new BeerListView({ collection: beer_collection });
+      beer_list.render();
     });
 
     router.on('route:beer', function (action) {
-      if(action == 'new'){ 
-        var newBeer = new NewBeerView();
-        newBeer.render();
+      if(action == 'new'){
+        new NewBeerView( { collection: beer_collection } ).render();
+        $('#new_beer_modal').modal();
       }
     });
     
@@ -46,6 +47,6 @@ function(window, $, _, Backbone, BeerListView, NewBeerView) {
     
   };
   
-  return { initialize: initialize }
+  return { initialize: initialize };
 
 });

@@ -1,8 +1,18 @@
-define(['collections/beers'],function (Beers) {
+define(['collections/beers', 'models/beer'],function (Beers, BeerModel) {
     describe('The Beers Collection', function () {
+        var beers, beerModel;
+
+        beforeEach(function () {
+          beers = new Beers();
+          beer_model = new BeerModel();
+        });
         
-        it('is not undefined', function () {
+        it('is defined', function () {
         	expect(Beers).not.toBeUndefined();
+        });
+
+        it('has Beer as a Model', function () {
+          expect( beers.model ).toEqual( BeerModel )
         });
 
       //   it('has normal backbone model functions', function () {

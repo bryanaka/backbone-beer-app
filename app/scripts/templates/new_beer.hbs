@@ -1,51 +1,62 @@
-<h1>New Beer</h1>
-<hr>
-<fieldset>
-	<form id="new_beer_form" action="/beers" method="POST">
-		<table>
-			<tbody>
-				<tr class="fields">
-					<td>
-						<label for="beer_name">Name:</label>
-					</td>
-					<td>
-						<input type="text" id="beer_name" name="beer[name]">
-					</td>
-				</tr>
-				<tr class="fields">
-					<td>
-						<label for="beer_type">Type:</label>
-					</td>
-					<td>
-						<input type="text" id="beer_type" name="beer[type]">
-					</td>
-				</tr>
-				<div class="fields">
-					<td>
-						<label for="beer_quantity">Quantity (oz)</label>
-					</td>
-					<td>
-						<input type="text" id="beer_quantity" name="beer[quantity]">
-					</td>
-				</tr>
-				<tr class="fields">
-					<td>
-						<label for="beer_container">Container Type</label>
-					</td>
-					<td>
-						<select id="beer_container" name="beer[container_id]">
-							<option value="keg">Keg</option>
-							<option value="bottle">Bottle</option>
-							<option value="can">Can</option>
-						</select>
-					</td>
-				</tr>
-				<tr class="fields">
-					<td>
-						<input type="submit" class="btn btn-primary">
-					</td>
-				</tr>
-			</tbody>
-		</table>
-	</form>
-</fieldset>
+<div class="modal fade" id="new_beer_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal-dialog">
+  	<div class="modal-content">
+    	<div class="modal-header">
+      		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+        		&times;
+        	</button>
+      		<h4 class="modal-title">New Beer</h4>
+    	</div>
+    <form id="new_beer_form" action="/beers" method="POST">
+    <div class="modal-body" id="modal__body">
+    	<fieldset>
+			<table>
+				<tbody>
+					<tr class="fields">
+						<td>
+							<label for="beer_name">Name:</label>
+						</td>
+						<td>
+							<input type="text" id="beer_name" name="beer[name]">
+						</td>
+					</tr>
+					<tr class="fields">
+						<td>
+							<label for="beer_type">Type:</label>
+						</td>
+						<td>
+							<input type="text" id="beer_type" name="beer[type]">
+						</td>
+					</tr>
+					<div class="fields">
+						<td>
+							<label for="beer_quantity">Quantity (oz)</label>
+						</td>
+						<td>
+							<input type="text" id="beer_quantity" name="beer[quantity]">
+						</td>
+					</tr>
+					<tr class="fields">
+						<td>
+							<label for="beer_container">Container Type</label>
+						</td>
+						<td>
+							<select id="beer_container" name="beer[container_id]">
+								<option value="keg">Keg</option>
+								<option value="bottle">Bottle</option>
+								<option value="can">Can</option>
+							</select>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</fieldset>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+      <input type="submit" class="btn btn-primary">
+    </div>
+    </form>
+  </div><!-- /.modal-content -->
+</div><!-- /.modal-dialog -->
+</div><!-- /modal -->

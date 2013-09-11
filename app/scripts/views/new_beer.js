@@ -1,31 +1,39 @@
 /*global define*/
 
-define([ 'jquery', 'underscore', 'backbone', 'templates', 'models/beer', 'views/beer_list'],
-function ($, _, Backbone, JST, Beer, BeerListView) {
+define([ 'jquery', 'underscore', 'backbone', 'templates', 'models/beer'],
+function ($, _, Backbone, JST, Beer) {
     'use strict';
 
     var NewBeerView = Backbone.View.extend({
-    	initialize: function () {
-    		this.model = new Beer();
-    	},
-    	el: '#app-container',
+    	el: '#new-beer-container',
       template: JST['app/scripts/templates/new_beer.hbs'],
+      initialize: function () {
+        this.model = new Beer();
+      },
       render: function () {
       	this.$el.html( this.template({}) );
       },
       events: {
-      	'submit #new_beer_form': 'createBeer'
+      	'submit #new_beer_form': 'createBeer',
+        'hidden.bs.modal': 'destroyView'
       },
       createBeer: function (event) {
-      	event.preventDefault();
+        event.preventDefault();
       	this.model.set({
-      		name: this.$el.find('#beer_name').val(),
-      		type: this.$el.find('#beer_type').val(),
-      		quantity: this.$el.find('#beer_quantity').val(),
-      		container: this.$el.find('#beer_container').val()
+      		name: this.$('#beer_name').val(),
+      		type: this.$('#beer_type').val(),
+      		quantity: this.$('#beer_quantity').val(),
+      		container: this.$('#beer_container').val()
       	});
-        var listView = new BeerListView();
-        listView.addBeer(this.model);
+        this.collection.add(this.model);
+        this.$('#new_beer_modal').modal('hide');
+        Backbone.Router.prototype.navigate('', { trigger:true } );
+      },
+      destroyView: function () {
+        console.log('destroying view');
+        this.undelegateEvents();
+        this.$el.removeData().unbind();
+        this.$el.empty();
       }
     });
 

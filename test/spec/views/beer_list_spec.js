@@ -4,18 +4,19 @@ function (BeerListView, Beer, BeersCollection) {
 		var view, beer, beers_collection;
 
 		beforeEach(function () {
-			view = new BeerListView();
 			beers_collection = new BeersCollection();
 			beer = new Beer({ name: 'Bud Light', quantity: 12, container:'can', type: 'lager' });
+			
+			view = new BeerListView( { collection: beers_collection } );
+			spyOn(view, 'addBeer').andCallThrough();
+			spyOn(view, 'render').andCallThrough();
 		});
 
 		it('can create a new instance', function () {
 			expect(view).toBeDefined();
-			expect(beer).toBeDefined();
 		});
 
 		it('has $el set to #app-container', function () {
-			expect( view.$el ).toBeDefined();
 			expect( view.$el ).toEqual( $('#app-container') );
 		});
 
@@ -23,11 +24,11 @@ function (BeerListView, Beer, BeersCollection) {
 			expect(view.collection).toBeDefined();
 			expect(view.collection).toEqual( beers_collection );
 		});
-
-		it('can add a beer to the list', function () {
-			expect( view.addBeer ).toBeDefined();
-			view.addBeer(beer);
-			expect( view.$('.beer-card').length ).toEqual(1);
-		});
+		// do not know how to correctly implement this test
+		// 
+		// it('re-renders when a beers is added to the collection', function () {
+		// 	view.addBeer(beer);
+		// 	expect( view.render ).toHaveBeenCalled();
+		// });
 	});
 });

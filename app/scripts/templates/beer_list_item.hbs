@@ -1,7 +1,11 @@
-{{#if beer }}
-<div class="beer-card">
-	name: {{beer.name}}<br>
-	type: {{beer.type}}
+{{#if beer}}
+<div class="col-md-4">
+	<article class="beer-card">
+		name: {{beer.name}}<br>
+		type: {{beer.type}}<br>
+		quantity: {{beer.quantity}}<br>
+		container: {{beer.container}}
+	</article>
 </div>
 {{else}}
 	No Beers!

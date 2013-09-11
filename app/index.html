@@ -31,13 +31,16 @@
           <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav">
-                    <li><a href="/beers/new">Add a Beer</a></li>
+                    <li><a data-toggle="modal" data-target="#new_beer_modal" href="/beers/new">Add a Beer</a></li>
                 </ul>
             </div><!-- /.navbar-collapse -->
         </nav>
 
         <div id="app-container">
         </div>
+        <div id="new-beer-container" class="modal-container">
+        </div>
+        </div><!-- /.modal -->
     </div>
 
 <!--[if lt IE 8]>
