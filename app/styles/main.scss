@@ -6,9 +6,30 @@ $iconSpritePath: '/images/glyphicons-halflings.png';
     width: 300px;
 }
 
+.beer-card-container {
+	margin-top: 16px;
+}
+
 .beer-card {
 	border: #CDCDCD 3px solid;
 	border-radius: 10px;
 	padding: 10px;
 	background-color: #FAFAFA;
+	text-align: center;
+}
+
+.beer-card__name {
+	color: #252525;
+}
+.beer-card__type {
+	color: #444444;
+}
+.beer__info {
+	padding: 10px;
+	text-align: center;
+	vertical-align: middle;
+
+	// &:first-of-type {
+	// 	border-right: 3px #CDCDCD solid;
+	// }
 }

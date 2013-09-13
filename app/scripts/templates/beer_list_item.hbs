@@ -1,12 +1,25 @@
 {{#if beer}}
-<div class="col-md-4">
-	<article class="beer-card">
-		name: {{beer.name}}<br>
-		type: {{beer.type}}<br>
-		quantity: {{beer.quantity}}<br>
-		container: {{beer.container}}
-	</article>
-</div>
+<article class="beer-card">
+	<h3 class="beer-card__name">{{beer.name}}</h3>
+	<h4 class="beer-card__type">{{beer.type}}</h4>
+	<section class="row">
+		<div class="col-xs-6 beer__info">
+			{{beer.quantity}} oz. left
+		</div>
+		<div class="col-xs-6 beer__info">
+			{{beer.container}}
+		</div>
+		<div class="col-xs-12">
+			<hr>
+		</div>
+		<div class="col-xs-6 beer__info">
+			<button class="btn btn-success js-drink">Drink 12oz.</button>
+		</div>
+		<div class="col-xs-6 beer__info">
+			<button class="btn btn-primary js-buy-more">Buy More</button>
+		</div>
+	</section>
+</article>
 {{else}}
 	No Beers!
 {{/if}}

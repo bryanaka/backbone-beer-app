@@ -15,6 +15,7 @@ function ($, _, Backbone, JST, Beer) {
       },
       events: {
       	'submit #new_beer_form': 'createBeer',
+        'click #new_beer_close': 'modalClose',
         'hidden.bs.modal': 'destroyView'
       },
       createBeer: function (event) {
@@ -26,11 +27,13 @@ function ($, _, Backbone, JST, Beer) {
       		container: this.$('#beer_container').val()
       	});
         this.collection.add(this.model);
+        this.modalClose();
+      },
+      modalClose: function () {
         this.$('#new_beer_modal').modal('hide');
         Backbone.Router.prototype.navigate('', { trigger:true } );
       },
       destroyView: function () {
-        console.log('destroying view');
         this.undelegateEvents();
         this.$el.removeData().unbind();
         this.$el.empty();

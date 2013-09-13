@@ -34,5 +34,8 @@ function ($, NewBeerView, BeerListView, Beer, BeersCollection) {
 		// 	expect( list.$('#new_beer_modal').length ).toBeGreaterThan(0);
 		// 	expect( view.$('form').length ).toBeGreaterThan(0);
 		// });
+		// 
+		// it('can close the modal', function () {});
+		// it('destroys the view on close', function () {});
 	});
 });

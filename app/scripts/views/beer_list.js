@@ -10,11 +10,12 @@ function ($, _, Backbone, BeerListItem, BeerCollection, JST) {
 		el: '#app-container',
         template: JST['app/scripts/templates/beer_list.hbs'],
         render: function () {
+            var _this = this;
             this.$el.empty();
             this.$el.html( this.template({}) );
             _.each(this.collection.models, function (model, index, modelsArray) {
-                var listItem = new BeerListItem();
-                listItem.render( { "beer": model.toJSON() } );
+                var listItem = new BeerListItem( { 'model': model, 'collection': _this.collection } );
+                listItem.render();
             });
         },
         addBeer: function (beer) {
